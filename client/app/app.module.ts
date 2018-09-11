@@ -1,6 +1,10 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { JwtModule } from '@auth0/angular-jwt';
 
+import { CoreModule } from './core/core.module';
+import { LayoutModule } from './layout/layout.module';
+
+
 import { RoutingModule } from './routing.module';
 import { SharedModule } from './shared/shared.module';
 import { CatService } from './services/cat.service';
@@ -25,6 +29,8 @@ export function tokenGetter() {
   imports: [
     RoutingModule,
     SharedModule,
+    CoreModule,
+    LayoutModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
