@@ -10,6 +10,6 @@
 @import '../node_modules/loaders.css/loaders.css';
 
 @import '../node_modules/angular2-toaster/toaster.css';
-@import './assets/styles/theme.min.css';
 @import './assets/styles/bootstrap.css';
+@import './assets/styles/theme.min.css';
 

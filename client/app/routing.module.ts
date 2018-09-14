@@ -1,23 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { MenuService } from './core/menu/menu.service';
 
-import { AuthGuardLogin } from './services/auth-guard-login.service';
-import { AuthGuardAdmin } from './services/auth-guard-admin.service';
-
-const routes: Routes = [
-  { path: '', component: HomeComponent },
-  // { path: 'account', component: AccountComponent, canActivate: [AuthGuardLogin] },
-  // { path: 'admin', component: AdminComponent, canActivate: [AuthGuardAdmin] },
-  { path: 'notfound', component: NotFoundComponent },
-  { path: '**', redirectTo: '/notfound' },
-];
+import appMenu from './views/menu';
+import appRoutes from './views/routes';
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [ RouterModule, RouterModule.forRoot(appRoutes) ],
   exports: [ RouterModule ]
 })
 
-export class RoutingModule {}
+export class RoutingModule {
+  constructor(private menu: MenuService) {
+    menu.addMenu(appMenu);
+}
+}

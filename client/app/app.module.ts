@@ -6,6 +6,7 @@ import { LayoutModule } from './layout/layout.module';
 
 
 import { RoutingModule } from './routing.module';
+import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { CatService } from './services/cat.service';
 import { UserService } from './services/user.service';
@@ -13,8 +14,8 @@ import { AuthService } from './services/auth.service';
 import { AuthGuardLogin } from './services/auth-guard-login.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeComponent } from './views/home/home.component';
+import { NotFoundComponent } from './views/not-found/not-found.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');

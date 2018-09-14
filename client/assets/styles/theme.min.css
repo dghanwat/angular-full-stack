@@ -6573,3 +6573,7 @@ body .jvectormap-zoomout {
     color: #fff;
     background-color: #f05050;
 }
+
+.sidebar-nav > li.active {
+    border-left-color: #23b7e5;
+}

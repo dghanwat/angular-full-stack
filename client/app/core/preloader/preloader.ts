@@ -1,11 +1,11 @@
-declare var $: any;
+// declare var $: any;
 
 (function(global) {
 
     let counter = 0, timeout;
-    let preloader = <HTMLElement>document.querySelector('.preloader');
-    let progressBar = <HTMLElement>document.querySelector('.preloader-progress-bar');
-    let body = <HTMLElement>document.querySelector('body');
+    let preloader = document.querySelector('.preloader');
+    let progressBar = document.querySelector('.preloader-progress-bar');
+    let body = document.querySelector('body');
 
     // disables scrollbar
     body.style.overflow = 'hidden';
@@ -14,6 +14,7 @@ declare var $: any;
 
     // main.ts call this function once the app is boostrapped
     global.appBootstrap = () => {
+        console.log("Inside glboal bootstrap")
         setTimeout(endCounter, 1000);
     };
 
@@ -47,4 +48,4 @@ declare var $: any;
         preloader.className += ' preloader-hidden-add preloader-hidden-add-active';
     };
 
-})((<any>window));
+})((window));

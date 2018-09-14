@@ -49,7 +49,10 @@ export class HeaderComponent implements OnInit {
     }
 
     toggleCollapsedSideabar() {
+        console.log("inside toggleCollapsedSideabar" , this.settings.layout.isCollapsed);
         this.settings.layout.isCollapsed = !this.settings.layout.isCollapsed;
+        console.log("inside toggleCollapsedSideabar after " , this.settings.layout.isCollapsed);
+
     }
 
     isCollapsedText() {
