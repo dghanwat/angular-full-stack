@@ -11,5 +11,6 @@
 
 @import '../node_modules/angular2-toaster/toaster.css';
 @import './assets/styles/bootstrap.css';
+@import './assets/styles/animate.css';
 @import './assets/styles/theme.min.css';
 
