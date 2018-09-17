@@ -6,6 +6,7 @@ import { HomeComponent } from './views/home/home.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
 import { DropdownComponent } from './views/elements/dropdown/dropdown.component';
 import { CreateCVComponent } from './views/cvmanagement/createcv.component';
+import { ViewCVComponent } from './views/cvmanagement/viewcv.component';
 
 import appMenu from './views/menu';
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   // { path: 'admin', component: AdminComponent, canActivate: [AuthGuardAdmin] },
   { path: 'createcv', component: CreateCVComponent },
   { path: 'notfound', component: NotFoundComponent },
+  { path: 'viewcv', component: ViewCVComponent },
   {
     path: 'elements',
     children: [

@@ -4,7 +4,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { CoreModule } from './core/core.module';
 import { LayoutModule } from './layout/layout.module';
-
+import { CVTemplatesModule } from './cvtemplates/cvtemplates.module';
 
 // import { RoutesModule } from './views/routes.module';
 import { RoutingModule } from './routing.module';
@@ -20,6 +20,7 @@ import { HomeComponent } from './views/home/home.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
 import { DropdownComponent } from './views/elements/dropdown/dropdown.component';
 import { CreateCVComponent } from './views/cvmanagement/createcv.component';
+import { ViewCVComponent } from './views/cvmanagement/viewcv.component';
 
 
 export function tokenGetter() {
@@ -32,13 +33,15 @@ export function tokenGetter() {
     HomeComponent,
     NotFoundComponent,
     DropdownComponent,
-    CreateCVComponent
+    CreateCVComponent,
+    ViewCVComponent
   ],
   imports: [
     RoutingModule,
     SharedModule,
     CoreModule,
     LayoutModule,
+    CVTemplatesModule,
     BsDropdownModule.forRoot(),
     JwtModule.forRoot({
       config: {

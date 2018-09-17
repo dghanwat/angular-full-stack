@@ -9,6 +9,11 @@ const CreateCV = {
     link: '/createcv',
     icon: 'fa fa-plus'
 };
+const ViewCV = {
+    text: 'View',
+    link: '/viewcv',
+    icon: 'fa fa-eye'
+};
 
 // const Elements = {
 //     text: 'Elements',
@@ -63,4 +68,4 @@ const CreateCV = {
 // };
 
 // export default [Home, Elements];
-export default [Home,CreateCV];
+export default [Home,CreateCV,ViewCV];
