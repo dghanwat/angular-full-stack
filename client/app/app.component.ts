@@ -1,4 +1,4 @@
-import { AfterViewChecked, ChangeDetectorRef, Component, ViewEncapsulation, HostBinding } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, ViewEncapsulation, HostBinding, AfterViewInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { SettingsService } from './core/settings/settings.service';
 
@@ -6,9 +6,9 @@ import { SettingsService } from './core/settings/settings.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   // styleUrls: ['./app.component.scss'],
-  encapsulation: ViewEncapsulation.None 
+  encapsulation: ViewEncapsulation.None
 })
-export class AppComponent implements AfterViewChecked {
+export class AppComponent implements AfterViewChecked, AfterViewInit {
 
   @HostBinding('class.layout-fixed') get isFixed() { return this.settings.layout.isFixed; };
   @HostBinding('class.aside-collapsed') get isCollapsed() { return this.settings.layout.isCollapsed; };
@@ -23,11 +23,68 @@ export class AppComponent implements AfterViewChecked {
 
 
   constructor(public auth: AuthService,
-    private changeDetector: ChangeDetectorRef,public settings: SettingsService) { }
+    private changeDetector: ChangeDetectorRef, public settings: SettingsService) {
+      setTimeout(() => { 
+        this.startCounter()
+      }, 20);
+  }
+
+  counter = 0;
+  preloader: HTMLElement;
+  progressBar: HTMLElement;
+  body: HTMLElement;
+  
+
 
   // This fixes: https://github.com/DavideViolante/Angular-Full-Stack/issues/105
   ngAfterViewChecked() {
     this.changeDetector.detectChanges();
   }
+
+  ngAfterViewInit() {
+    console.log("In after view init of App Component");
+    this.preloader = <HTMLElement>document.querySelector('.preloader');
+    this.progressBar = <HTMLElement>document.querySelector('.preloader-progress-bar');
+    console.log('this.progressBar', this.progressBar)
+    this.body = <HTMLElement>document.querySelector('body');
+    // this.timeout = setTimeout(this.startCounter, 20);
+    // disables scrollbar
+    this.body.style.overflow = 'hidden';
+    setTimeout(() => { 
+      this.endCounter()
+    }, 3000);
+  }
+
+  startCounter() {
+    let remaining = 100 - this.counter;
+    this.counter = this.counter + (0.015 * Math.pow(1 - Math.sqrt(remaining), 2));
+    this.progressBar.style.width = Math.round(this.counter) + '%';
+    setTimeout(() => { 
+      this.startCounter()
+    }, 20);
+  }
+
+  endCounter() {
+
+    // clearTimeout(this.timeout);
+    if (!this.progressBar) {
+      this.progressBar = <HTMLElement>document.querySelector('.preloader-progress-bar');
+    }
+    this.progressBar.style.width = '100%';
+    setTimeout(() => { 
+      // animate preloader hiding
+      this.removePreloader();
+      // retore scrollbar
+      this.body.style.overflow = '';
+    }, 300);
+    
+  }
+
+  removePreloader() {
+    this.preloader.addEventListener('transitionend', () => {
+      this.preloader.className = 'preloader-hidden';
+    });
+    this.preloader.className += ' preloader-hidden-add preloader-hidden-add-active';
+  };
 
 }

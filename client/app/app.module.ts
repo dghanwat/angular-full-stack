@@ -6,7 +6,8 @@ import { CoreModule } from './core/core.module';
 import { LayoutModule } from './layout/layout.module';
 
 
-import { RoutesModule } from './views/routes.module';
+// import { RoutesModule } from './views/routes.module';
+import { RoutingModule } from './routing.module';
 import { SharedModule } from './shared/shared.module';
 import { CatService } from './services/cat.service';
 import { UserService } from './services/user.service';
@@ -15,16 +16,26 @@ import { AuthGuardLogin } from './services/auth-guard-login.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { AppComponent } from './app.component';
 
+import { HomeComponent } from './views/home/home.component';
+import { NotFoundComponent } from './views/not-found/not-found.component';
+import { DropdownComponent } from './views/elements/dropdown/dropdown.component';
+import { CreateCVComponent } from './views/cvmanagement/createcv.component';
+
+
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    NotFoundComponent,
+    DropdownComponent,
+    CreateCVComponent
   ],
   imports: [
-    RoutesModule,
+    RoutingModule,
     SharedModule,
     CoreModule,
     LayoutModule,

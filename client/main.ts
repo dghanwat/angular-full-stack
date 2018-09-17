@@ -10,5 +10,5 @@ if (environment.production) {
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule)
-  .then(() => { console.log("inside bootstrap");(<any>window).appBootstrap && (<any>window).appBootstrap(); })
+  .then(() => { })
   .catch(err => console.log(err));

@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class SettingsService {
 
-    private user: any;
-    private app: any;
+    public user: any;
+    public app: any;
     public layout: any;
 
     constructor() {

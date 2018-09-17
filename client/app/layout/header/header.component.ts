@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
     isNavSearchVisible: boolean;
     @ViewChild('fsbutton') fsbutton;  // the fullscreen button
 
-    constructor(private userblockService: UserblockService, private settings: SettingsService) { }
+    constructor(private userblockService: UserblockService, public settings: SettingsService) { }
 
     ngOnInit() {
         this.isNavSearchVisible = false;
